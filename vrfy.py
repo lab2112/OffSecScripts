@@ -13,13 +13,14 @@ def verify_test(ip, user, out):
 	banner = s.recv(1024)
 
 	print banner
-	out.write(banner)
+	out.write("~~~~~" + user.strip() + "@" + ip.strip() + "~~~~~\n")
+	out.write("Banner: " + banner)
 
 	#VRFY a user
 	s.send('VRFY ' + user.strip() + '\r\n')
 	result = s.recv(1024)
 	print result
-	out.write(result)
+	out.write("Result: " + result)
 	
 	#close socket
 	s.close()
